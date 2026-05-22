@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local-only config (skills sometimes reference settings.json — keep the
+# .example version in version control, never the filled-in copy).
+settings.json
+
+# Node (for any test harness or packaging script we add later)
+node_modules/
+*.log
+
+# Python caches (in case a skill ships a Python helper)
+__pycache__/
+*.pyc
+.venv/
+
+# Build artifacts
+dist/
+build/

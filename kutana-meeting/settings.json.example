@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "kutana": {
+      "type": "streamableHttp",
+      "url": "https://kutana.spark-b0f2.local/mcp",
+      "headers": {
+        "Authorization": "Bearer ${KUTANA_API_KEY}"
+      }
+    }
+  }
+}

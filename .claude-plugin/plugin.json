@@ -1,0 +1,9 @@
+{
+  "name": "kutana",
+  "description": "Connect Claude Code to Kutana meetings; share a local dev server as a live, drivable artifact for everyone in the meeting.",
+  "version": "0.1.0",
+  "author": "Kutana AI",
+  "homepage": "https://kutana.ai",
+  "repository": "https://github.com/kutana-ai/kutana-skills",
+  "license": "MIT"
+}
