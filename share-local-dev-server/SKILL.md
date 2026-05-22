@@ -114,16 +114,20 @@ If you want a different slug or to keep the artifact pinned across re-emits, you
 - **Update the embed.** Re-emit `kutana_browse(url=NEW_URL, slug="dev-preview")` with the same slug to replace the artifact in place. Use `kutana_artifact(slug="dev-preview", html="<empty>")` to clear it.
 - **Stop sharing.** `kutana_browse_terminate(session_id=...)` ends the Browserbase session. The tunnel itself is cleaned up automatically when the meeting ends.
 
-## Write-op safety
+## Share-screen approval
 
-If you need to commit + push code (e.g., applying a fix you and the participants just discussed), do it through `kutana_bash` rather than the built-in bash tool. `kutana_bash` surfaces a PermissionBubble for git push, npm publish, sudo, and other destructive operations — participants click Allow/Deny inline before the action runs. The built-in bash tool bypasses this safety layer.
+Both of the meeting-facing tools this skill uses (`kutana_browse` and `kutana_artifact`) pause briefly for the meeting owner (managed agents) or the agent creator (custom agents) to approve before any content lands in the ArtifactPanel. This is intentional — those calls put a live preview in front of every participant, so the approver gets a single click to confirm.
 
 ```
-kutana_bash(command="git push origin feature/walkthrough-fix")
-# → PermissionBubble appears in the meeting
-# → on Allow: push proceeds and you continue
-# → on Deny: returns a blocked-envelope so you can explain and choose differently
+kutana_browse(url=PUBLIC_URL, slug="dev-preview")
+# → PermissionBubble appears for the approver (meeting owner or agent creator)
+# → on Allow: Browserbase session opens + live view embeds in the meeting
+# → on Deny: returns a blocked-envelope; explain to participants and choose differently
 ```
+
+For shell work that doesn't touch the meeting — installing dependencies, running tests, working with git inside your own environment — use your own coding environment's bash tool. There is no `kutana_bash` MCP tool; sandboxing the agent's filesystem is the container provider's job, not Kutana's.
+
+For reads and writes against external systems (a repository, chat workspace, docs surface), use whichever MCPs your creator connected to this meeting (GitHub, Slack, Notion, etc.). The list of available tools is the source of truth — check what you have before assuming.
 
 ## Troubleshooting
 
