@@ -98,27 +98,21 @@ until curl -fsS "${PUBLIC_URL}" -o /dev/null; do sleep 1; done
 echo "Tunnel live: ${PUBLIC_URL}"
 ```
 
-### 5. Open the URL in Browserbase
+### 5. Open the URL in Browserbase and embed the live view in the meeting
 
 ```
-kutana_browse(url="${PUBLIC_URL}")
+kutana_browse(url="${PUBLIC_URL}", slug="dev-preview")
 ```
 
-Returns a Browserbase session live-view URL — a streamable cloud Chromium view that participants will see.
+`kutana_browse` does two things in one call: it opens a Browserbase session at the URL **and** internally publishes the Live View as a meeting artifact (slug-keyed). Returns `{session_id, live_view_url, terminates_at, artifact_id}`. Every meeting participant now sees the live app in the right-rail ArtifactPanel.
 
-### 6. Embed the live view in the meeting ArtifactPanel
-
-```
-kutana_artifact(url="<liveview_url from step 5>", slug="dev-preview", title="Live preview of <repo-or-project-name>")
-```
-
-Every meeting participant now sees the live app in the right-rail ArtifactPanel. They can watch you (or you-the-agent) drive it.
+If you want a different slug or to keep the artifact pinned across re-emits, you can also call `kutana_artifact(url=live_view_url, slug="...", pinned=true)` explicitly — but for the standard demo flow, the single `kutana_browse` call is enough.
 
 ## Common follow-ups
 
-- **Walk participants through a feature.** Use `kutana_browse`'s driving primitives (CDP under the hood) to click around the app while the screen streams.
-- **Switch to a different page or repo.** Re-emit `kutana_artifact` with the same slug to update the panel in place — participants see the change live.
-- **Stop sharing.** Kill the tunnel client (`kill $TUNNEL_PID`) and re-emit `kutana_artifact` with empty body to clear the panel. The tunnel itself is cleaned up automatically when the meeting ends.
+- **Walk participants through a feature.** The Browserbase session is drivable — interact with the app and participants see the changes stream live in the ArtifactPanel.
+- **Update the embed.** Re-emit `kutana_browse(url=NEW_URL, slug="dev-preview")` with the same slug to replace the artifact in place. Use `kutana_artifact(slug="dev-preview", html="<empty>")` to clear it.
+- **Stop sharing.** `kutana_browse_terminate(session_id=...)` ends the Browserbase session. The tunnel itself is cleaned up automatically when the meeting ends.
 
 ## Write-op safety
 
