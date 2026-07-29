@@ -9,7 +9,6 @@ Each subdirectory is a self-contained skill following the [Anthropic Agent Skill
 | Skill | Triggers on | What it does |
 |---|---|---|
 | [`kutana-meeting`](./kutana-meeting/) | "meeting", "kutana", "standup", "call", "hand raise", "speaker", "transcript", "action items", "join meeting" | Connects an agent to a Kutana meeting via MCP — list/join meetings, request speaker turns, send chat, fetch transcripts, create tasks. |
-| [`share-local-dev-server`](./share-local-dev-server/) | "share screen", "demo", "dev server", "show this in the meeting", "live preview", "walk through this" | Provisions a per-meeting Cloudflare Tunnel for the agent's local dev server and embeds a live Browserbase view in the meeting's ArtifactPanel — the unified-tunnel architecture (v2). |
 
 ## Why a separate repo
 
