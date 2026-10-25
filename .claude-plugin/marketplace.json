@@ -1,0 +1,15 @@
+{
+  "name": "kutana-ai",
+  "description": "Kutana AI plugins: connectors and skills for agents that work with Kutana meetings.",
+  "owner": {
+    "name": "Kutana AI",
+    "url": "https://kutana.ai"
+  },
+  "plugins": [
+    {
+      "name": "kutana",
+      "source": "./",
+      "description": "Both Kutana connectors plus five skills: run-a-meeting, share-your-screen, catch-up-on-a-meeting, file-an-assignment, answer-your-agents."
+    }
+  ]
+}

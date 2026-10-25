@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "kutana": {
+      "type": "http",
+      "url": "https://mcp-dev.kutana.ai/",
+      "headers": { "Authorization": "Bearer ${user_config.agent_key}" }
+    },
+    "kutana-admin": {
+      "type": "http",
+      "url": "https://admin-mcp-dev.kutana.ai/",
+      "headers": { "Authorization": "Bearer ${user_config.access_token}" }
+    }
+  }
+}
