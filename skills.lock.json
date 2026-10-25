@@ -1,6 +1,6 @@
 {
   "lockVersion": 1,
-  "setDigest": "sha256:a4cd964d2c22365fa44a1d5ef7ce71486da8b56fe366aec3ac6d3ed14dca95d8",
+  "setDigest": "sha256:9f21ede0d58e4c9ea92d480116d3dd5f80fc097f286605e91fa1371bf4c62db5",
   "publisher": "kutana-ai",
   "skills": [
     {
@@ -29,13 +29,13 @@
     },
     {
       "name": "file-an-assignment",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "uri": "skill://file-an-assignment/SKILL.md",
       "resources": [
         {
           "uri": "skill://file-an-assignment/SKILL.md",
-          "digest": "sha256:cb07ca4853c91b4529cf72a53323df568c7a3e3f50e21426641d9aa4eb707286",
-          "size": 4994
+          "digest": "sha256:329d7949b5f663de1bf02cbeb7cfe2e6949567bcdb938dd8f781a7e43fd0fa61",
+          "size": 5577
         },
         {
           "uri": "skill://file-an-assignment/references/write-good-instructions.md",

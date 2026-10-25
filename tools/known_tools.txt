@@ -1,6 +1,6 @@
 # Tool names the Kutana connectors expose. Skills may name only these.
 # Regenerate from kutana-ai-web services/mcp-server and packages/kutana-admin-tools
-# when a tool is added, renamed or removed. Lines ending in '  pending' are
+# when a tool is added, renamed or removed. Lines ending in '' are
 # announced but not live yet; a skill naming one must also name a fallback.
 
 kutana_append_note
@@ -103,7 +103,14 @@ kutana_admin_set_meeting_prep
 kutana_admin_set_routine
 kutana_admin_start_meeting
 kutana_admin_update_action_item
-kutana_admin_create_assignment  pending
-kutana_admin_list_assignments  pending
-kutana_admin_update_assignment  pending
-kutana_admin_run_assignment_now  pending
+kutana_admin_create_assignment
+kutana_admin_list_assignments
+kutana_admin_update_assignment
+kutana_admin_run_assignment_now
+kutana_admin_get_assignment
+kutana_admin_delete_assignment
+kutana_admin_get_assignment_runs
+kutana_admin_review_assignment_run
+kutana_admin_review_suggested_assignment
+kutana_admin_message_assignment_run
+kutana_admin_stop_assignment_run
