@@ -35,9 +35,9 @@ jobs:
             python3 -m json.tool "$f" > /dev/null || { echo "::error file=$f::invalid JSON"; exit 1; }
           done
 
-      - name: No secrets in the connectors
+      - name: No secrets anywhere in the repo
         run: |
-          if grep -nE '(cvn|kpat)_[A-Za-z0-9]{8,}' .mcp.json .claude-plugin/plugin.json; then
+          if git grep -nE '(cvn|kpat)_[A-Za-z0-9]{8,}|sk-ant-[A-Za-z0-9_-]{8,}|eyJ[A-Za-z0-9_-]{20,}\.' -- . ':!skills.lock.json'; then
             echo "::error::a token is committed; connectors must use \${user_config.*}"
             exit 1
           fi
@@ -93,6 +93,7 @@ jobs:
           if ! git diff --quiet; then
             git add .claude-plugin/plugin.json skills.lock.json skills
             git commit -m "chore(release): v${VERSION}"
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
           if git rev-parse -q --verify "refs/tags/v${VERSION}" > /dev/null; then

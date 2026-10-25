@@ -61,7 +61,7 @@ page shows. Their fields match the app: `agent_id`, `timing` (`before`, `after` 
 | **Change** one, or pause it with `enabled=false` | `kutana_admin_update_assignment` |
 | **Run** one right now | `kutana_admin_run_assignment_now` |
 
-- **Run now** is its own run, any time the person has agent minutes. It returns a cost
+- **Run Now** is its own run, any time the person has agent minutes. It returns a cost
   projection: tell the person the cost and get their yes before you confirm it.
 - Your tool list is the final word on argument names; read each tool's description.
 

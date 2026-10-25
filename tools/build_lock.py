@@ -55,7 +55,11 @@ SEMVER = re.compile(r"^\d+\.\d+\.\d+$")
 TOOL_NAME = re.compile(r"(?<![\w])kutana_[a-z0-9_]*[a-z0-9](?![\w])")
 KNOWN_TOOLS = ROOT / "tools" / "known_tools.txt"
 # Hostnames that must never appear in this public repo.
-PRIVATE_HOST = re.compile(r"\.local\b|\.internal\b|\.ts\.net\b|\.lan\b|\b10\.\d+\.\d+\.\d+\b|\b192\.168\.")
+PRIVATE_HOST = re.compile(
+    r"\.local\b|\.internal\b|\.ts\.net\b|\.lan\b|\bspark-[a-z0-9]+\b"
+    r"|\b10\.\d+\.\d+\.\d+\b|\b192\.168\.|\b172\.(1[6-9]|2\d|3[01])\.\d+\.\d+\b"
+    r"|\b100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\.\d+\.\d+\b"
+)
 
 
 def frontmatter(text: str) -> dict[str, str]:

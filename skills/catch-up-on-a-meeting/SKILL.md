@@ -66,8 +66,10 @@ Statuses: `pending`, `in_progress`, `completed`, `cancelled`.
 
 - Every change returns a dry run until you pass `confirm=true`. Show the person the dry
   run first.
-- Deleting or cancelling a meeting is never applied by you: Kutana asks the person on
-  the **Delete Requests** card, and the result says it is pending. Say exactly that.
+- **Deleting or cancelling a meeting:** show the person the dry run, and pass
+  `confirm=true` only after they say yes. If the result carries `pending_approval`,
+  Kutana asked the person on the **Delete Requests** card instead: tell them exactly
+  that, and never say it is deleted.
 
 ## Without the Connector (Command Line)
 

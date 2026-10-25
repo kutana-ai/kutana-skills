@@ -1,6 +1,6 @@
 {
   "lockVersion": 1,
-  "setDigest": "sha256:b2aa4b276f25f71e65267e0f95e9ee41b4b49e9c755a03727affd31bcaf548a0",
+  "setDigest": "sha256:a4cd964d2c22365fa44a1d5ef7ce71486da8b56fe366aec3ac6d3ed14dca95d8",
   "publisher": "kutana-ai",
   "skills": [
     {
@@ -22,8 +22,8 @@
       "resources": [
         {
           "uri": "skill://catch-up-on-a-meeting/SKILL.md",
-          "digest": "sha256:a1f14e23a0b804621bc5b37f8f4f05ab7da17c21c07885f5e8a1897e1f97cd79",
-          "size": 4281
+          "digest": "sha256:84968c60dd8aa657fecd780678f1c2085af9a6c0abf35c2ba6c0b91576738978",
+          "size": 4394
         }
       ]
     },
@@ -34,7 +34,7 @@
       "resources": [
         {
           "uri": "skill://file-an-assignment/SKILL.md",
-          "digest": "sha256:1c6e492866d28cdd908bc53f14f64ff63301ccd6244ee80711c3da4d2adb388b",
+          "digest": "sha256:cb07ca4853c91b4529cf72a53323df568c7a3e3f50e21426641d9aa4eb707286",
           "size": 4994
         },
         {
