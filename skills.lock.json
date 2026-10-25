@@ -1,0 +1,92 @@
+{
+  "lockVersion": 1,
+  "setDigest": "sha256:a4cd964d2c22365fa44a1d5ef7ce71486da8b56fe366aec3ac6d3ed14dca95d8",
+  "publisher": "kutana-ai",
+  "skills": [
+    {
+      "name": "answer-your-agents",
+      "version": "0.2.0",
+      "uri": "skill://answer-your-agents/SKILL.md",
+      "resources": [
+        {
+          "uri": "skill://answer-your-agents/SKILL.md",
+          "digest": "sha256:4425078c18c7f7e4cbb47b7ed12d6722f4fa7616e0afa38b3a410b881e87db5d",
+          "size": 4025
+        }
+      ]
+    },
+    {
+      "name": "catch-up-on-a-meeting",
+      "version": "0.2.0",
+      "uri": "skill://catch-up-on-a-meeting/SKILL.md",
+      "resources": [
+        {
+          "uri": "skill://catch-up-on-a-meeting/SKILL.md",
+          "digest": "sha256:84968c60dd8aa657fecd780678f1c2085af9a6c0abf35c2ba6c0b91576738978",
+          "size": 4394
+        }
+      ]
+    },
+    {
+      "name": "file-an-assignment",
+      "version": "0.2.0",
+      "uri": "skill://file-an-assignment/SKILL.md",
+      "resources": [
+        {
+          "uri": "skill://file-an-assignment/SKILL.md",
+          "digest": "sha256:cb07ca4853c91b4529cf72a53323df568c7a3e3f50e21426641d9aa4eb707286",
+          "size": 4994
+        },
+        {
+          "uri": "skill://file-an-assignment/references/write-good-instructions.md",
+          "digest": "sha256:96ac81baa119192dcf311332dc4bc8c5ae3d67977f044740c0610534c4692e08",
+          "size": 912
+        },
+        {
+          "uri": "skill://file-an-assignment/scripts/check_assignment.py",
+          "digest": "sha256:fc0c22b15389bf7db60d89400b4d85159a6b95986831e520570431012dc0d3fe",
+          "size": 1784
+        }
+      ]
+    },
+    {
+      "name": "run-a-meeting",
+      "version": "0.2.0",
+      "uri": "skill://run-a-meeting/SKILL.md",
+      "resources": [
+        {
+          "uri": "skill://run-a-meeting/SKILL.md",
+          "digest": "sha256:7e7cb6caefa6237c59388120cac67449db7692bf359f50c8bde84ee449ce6df5",
+          "size": 5590
+        },
+        {
+          "uri": "skill://run-a-meeting/references/turn-taking.md",
+          "digest": "sha256:250c8e6638718e39c3719bec9b432053d5a38a6ff054cad7e768f1b40c0bf0fc",
+          "size": 1094
+        },
+        {
+          "uri": "skill://run-a-meeting/references/when-things-go-wrong.md",
+          "digest": "sha256:18a2f41f594ca34c1c6019535a0c4ba28806b52673f2a444f8351f400f951f7f",
+          "size": 885
+        }
+      ]
+    },
+    {
+      "name": "share-your-screen",
+      "version": "0.2.0",
+      "uri": "skill://share-your-screen/SKILL.md",
+      "resources": [
+        {
+          "uri": "skill://share-your-screen/SKILL.md",
+          "digest": "sha256:43acd892f98e00e4ba7b76487f4343811554ccf9312febdc8c9ea4719d0b65c9",
+          "size": 4969
+        },
+        {
+          "uri": "skill://share-your-screen/references/build-and-share.md",
+          "digest": "sha256:f447c0c18e7ae47f7028052f505d4834a71eae553770847a4eb12ce0a62744ab",
+          "size": 2540
+        }
+      ]
+    }
+  ]
+}

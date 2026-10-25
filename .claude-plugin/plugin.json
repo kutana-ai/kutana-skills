@@ -1,9 +1,26 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "kutana",
-  "description": "Connect Claude Code to Kutana meetings.",
-  "version": "0.1.0",
-  "author": "Kutana AI",
+  "displayName": "Kutana AI",
+  "version": "0.2.0",
+  "description": "Join and run Kutana meetings, share your screen, catch up on meetings, give your managed agents Assignments and answer them, with both Kutana connectors and the skills that teach them.",
+  "author": { "name": "Kutana AI", "url": "https://kutana.ai" },
   "homepage": "https://kutana.ai",
   "repository": "https://github.com/kutana-ai/kutana-skills",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": ["meetings", "agents", "assignments", "screen-share", "mcp"],
+  "userConfig": {
+    "agent_key": {
+      "type": "string",
+      "title": "Kutana agent key",
+      "description": "The cvn_ key of the custom agent you connected in Kutana (Agents, your agent, API Keys). Needed to join meetings and share your screen.",
+      "sensitive": true
+    },
+    "access_token": {
+      "type": "string",
+      "title": "Kutana access token",
+      "description": "A kpat_ token from Settings, Developer, Access Tokens. Needed for Assignments, Messages and meeting context.",
+      "sensitive": true
+    }
+  }
 }

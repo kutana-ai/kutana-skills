@@ -1,0 +1,104 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: lint, lock, validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Copy lint and content lock (skills.lock.json)
+        run: python3 tools/build_lock.py --check
+
+      - name: Scripts compile and run
+        run: |
+          python3 -m py_compile tools/*.py skills/*/scripts/*.py
+          python3 skills/file-an-assignment/scripts/check_assignment.py --lead-minutes 60 \
+            "Draft the agenda for Thursday's planning meeting from the last three occurrences."
+
+      - name: JSON manifests parse
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json skills.lock.json; do
+            python3 -m json.tool "$f" > /dev/null || { echo "::error file=$f::invalid JSON"; exit 1; }
+          done
+
+      - name: No secrets anywhere in the repo
+        run: |
+          if git grep -nE '(cvn|kpat)_[A-Za-z0-9]{8,}|sk-ant-[A-Za-z0-9_-]{8,}|eyJ[A-Za-z0-9_-]{20,}\.' -- . ':!skills.lock.json'; then
+            echo "::error::a token is committed; connectors must use \${user_config.*}"
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: claude plugin validate
+        run: |
+          npm install -g @anthropic-ai/claude-code@2.1.285
+          claude plugin validate --strict .
+          claude plugin validate --strict .claude-plugin/plugin.json
+
+      - name: Release check (dry run)
+        run: |
+          git fetch --tags --unshallow --quiet || git fetch --tags --quiet
+          python3 tools/release.py --dry-run
+
+  release:
+    name: bump version and tag
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bump on any shipped change
+        id: bump
+        run: python3 tools/release.py
+
+      - name: Commit, tag and push
+        if: steps.bump.outputs.release == 'true'
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: |
+          set -euo pipefail
+          python3 tools/build_lock.py --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet; then
+            git add .claude-plugin/plugin.json skills.lock.json skills
+            git commit -m "chore(release): v${VERSION}"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          if git rev-parse -q --verify "refs/tags/v${VERSION}" > /dev/null; then
+            echo "v${VERSION} already tagged"
+          else
+            git tag -a "v${VERSION}" -m "kutana plugin v${VERSION}"
+            git push origin "v${VERSION}"
+          fi
